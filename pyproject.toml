@@ -1,0 +1,79 @@
+[project]
+name = "icebreaker"
+description = "ICEBreaker API for RACF"
+dynamic = ["version"]
+requires-python = ">=3.12"
+dependencies = [
+  "pysear==0.1.2 ; sys_platform=='zos'"
+]
+authors = [
+  {name = "Emma Skovgaard"}
+]
+readme = "README.md"
+license = {file = "LICENSE"}
+keywords = ["RACF", "security", "mainframe", "zos", "SEAR", "ESM"]
+
+classifiers = [    
+  #Application audience and type
+  "Topic :: Security",
+  "Intended Audience :: System Administrators",
+
+  #Status
+  "Development Status :: 3 - Alpha",
+
+  #Application environment
+  "Environment :: Console",
+  "Operating System :: POSIX",
+  "Topic :: System :: Hardware :: Mainframes",
+
+  #Supported python versions
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+
+  "Typing :: Typed",
+]
+
+[project.urls]
+Repository = "https://github.com/Mainframe-Renewal-Project/ICEBreaker-Routine"
+Source = "https://github.com/Mainframe-Renewal-Project/ICEBreaker-Routine"
+Issues = "https://github.com/Mainframe-Renewal-Project/ICEBreaker-Routine/issues"
+
+[build-system]
+requires = ["setuptools >= 61.0", "setuptools-scm >= 8.2"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+  ".git",
+  ".github",
+]
+
+[tool.ruff.lint]
+# Ruff by default is not very aggressive, only enforcing a few rulesets like E and F.
+# To ensure security and well organized code a bunch more rulesets have been enabled
+select = [
+  "E", 
+  "F", 
+  "B", 
+  "EM", 
+  "SIM", #Comes with suggestions on simplifying things
+  "PTH", #Must use pathlib instead of os
+  "N",  #Checks if code conforms to the PEP8 naming conventions
+  "PLE", 
+  "UP", 
+  "TRY", 
+  "FLY", #Checks for string joins
+  "I",  #Comes with suggestions on organizing imports
+  "COM", #Checks for missing commas and unnecessary 
+  "A", 
+  "C4",
+  "YTT",
+  "ASYNC",
+  ]
+
+# Avoid enforcing dumb rules
+ignore = ["E501","B024"]
